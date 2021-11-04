@@ -12,6 +12,4 @@ public class Shapes {
     public static Shape rectangleOf(double x, double y, double size, Color color) {
         return new Rectangle(color, x, y, size);
     }
-
-
 }
