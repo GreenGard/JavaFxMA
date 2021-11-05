@@ -31,7 +31,7 @@
                 <Button onAction="#onCircleButtonClick" text="Circle"/>
                 <Button onAction="#onRectangleButtonClick" text="Rectangle"/>
                 <Button onAction="#onUndoButtonClick" text="Undo"/>
-                <Button onAction="#writeStoreInventoryToFile" text="Save"/>
+                <Button onAction="#writeShapeesToFile" text="Save"/>
                 <CheckBox fx:id="checkBox1" mnemonicParsing="false" text="SelectItem"/>
             </HBox>
 

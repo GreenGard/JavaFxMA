@@ -1,30 +1,17 @@
 package se.iths.se.javafx.labb3maxblom;
 
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-
-import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Collection;
-import java.util.Objects;
-import java.util.jar.JarFile;
 import java.util.stream.Stream;
 
 public class HelloController {
@@ -32,33 +19,17 @@ public class HelloController {
     @FXML
     public Canvas canvas;
     @FXML
-    public Button buttonCircle;
-    @FXML
-    public Button buttonRectangle;
-    @FXML
     private ColorPicker colorPicker;
     @FXML
     private TextField shapeSize;
     @FXML
-    private CheckBox checkBox1;
-
-    @FXML
-    private ListView<String> listView1;
+    public CheckBox checkBox1;
 
     String shapeSelected = "rectangle";
-
-    public HelloController() {
-    }
-
-    public HelloController(Model model) {
-        this.model = model;
-    }
 
     public void initialize() {
         model = new Model();
         GraphicsContext gc = canvas.getGraphicsContext2D();
-
-
     }
 
     public void canvasClicked(MouseEvent event) {
@@ -67,12 +38,14 @@ public class HelloController {
                 model.shapes.stream()
                         .filter(shape -> shape.isInside(event.getX(), event.getY()))
                         .findFirst().ifPresent(shape -> {
-                                    shape.setColor(colorPicker.getValue());
-                                });
+                           shape.setColor(colorPicker.getValue());
+                            shape.setSize(Integer.parseInt(shapeSize.getText()));
+                            });
                 draw();
             }
-
-        }else{
+        }
+        else
+        {
             if (event.getButton().name().equals("PRIMARY")) {
                 switch (shapeSelected) {
                     case "circle":
@@ -161,7 +134,7 @@ public class HelloController {
         }
     }
 
-    public void writeStoreInventoryToFile(ActionEvent actionEvent) {
+    public void writeShapeesToFile(ActionEvent actionEvent) {
         File file = new File("savedCanvas.txt");
         if (file.delete()) {
             CheckShapeFile(actionEvent);
@@ -178,15 +151,4 @@ public class HelloController {
 
         }
     }
-
-    public void mouseClicked(MouseEvent mouseEvent) {
-        model.setText("");
-
-
-        System.out.println(mouseEvent.getX() + ":" + mouseEvent.getY());
-        System.out.println(mouseEvent.getSceneX() + ":" + mouseEvent.getSceneY());
-        System.out.println(mouseEvent.getScreenX() + ":" + mouseEvent.getScreenY());
-    }
-
-
 }

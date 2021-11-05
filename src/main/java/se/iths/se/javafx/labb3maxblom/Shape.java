@@ -3,17 +3,17 @@ package se.iths.se.javafx.labb3maxblom;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-
 public abstract sealed class Shape permits Circle, Rectangle {
-
     private Color color;
     private double x;
     private double y;
+    private double size;
 
-    public Shape(Color color, double x, double y) {
+    public Shape(Color color, double x, double y, double size) {
         this.color = color;
         this.x = x;
         this.y = y;
+        this.size = size;
     }
 
     public abstract void draw(GraphicsContext graphicsContext);
@@ -24,26 +24,31 @@ public abstract sealed class Shape permits Circle, Rectangle {
         return color;
     }
 
-    public Shape setColor(Color color) {
+    public void setColor(Color color) {
         this.color = color;
-        return this;
     }
 
     public double getX() {
         return x;
     }
 
-    public Shape setX(double x) {
+    public void setX(double x) {
         this.x = x;
-        return this;
     }
 
     public double getY() {
         return y;
     }
 
-    public Shape setY(double y) {
+    public void setY(double y) {
         this.y = y;
-        return this;
+    }
+
+    public double getSize(){
+        return size;
+    }
+
+    public void setSize(double size){
+        this.size = size;
     }
 }

@@ -3,8 +3,6 @@ package se.iths.se.javafx.labb3maxblom;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.css.Size;
-import javafx.css.SizeUnits;
 import javafx.scene.paint.Color;
 
 
@@ -32,12 +30,10 @@ public class Model {
 
 
     public Color getColor() {
-
         return color.get();
     }
 
     public ObjectProperty<Color> colorProperty() {
-
         return color;
     }
 
