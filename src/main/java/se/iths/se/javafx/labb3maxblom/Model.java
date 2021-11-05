@@ -15,11 +15,10 @@ public class Model {
     private final ObjectProperty<Color> color;
     //private final BooleanProperty size;
 
-
     ObservableList<String> observableList =
             FXCollections.observableArrayList();
 
-    List<Shape> shapes = new ArrayList<>();
+    public List<Shape> shapes = new ArrayList<>();
 
     public Model() {
         this.text = new SimpleStringProperty("");
@@ -27,7 +26,6 @@ public class Model {
         this.color = new SimpleObjectProperty<>(Color.BLACK);
         //this.size = new ObjectProperty<Size>();
         }
-
 
     public Color getColor() {
         return color.get();
@@ -67,5 +65,4 @@ public class Model {
     public StringProperty textProperty() {
         return text;
     }
-
 }

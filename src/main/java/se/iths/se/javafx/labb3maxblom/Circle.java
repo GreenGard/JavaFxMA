@@ -2,7 +2,6 @@ package se.iths.se.javafx.labb3maxblom;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import se.iths.se.javafx.labb3maxblom.Shape;
 
 public final class Circle extends Shape {
     private double radius = this.getSize();
@@ -20,6 +19,7 @@ public final class Circle extends Shape {
 
     @Override
     public boolean isInside(double x, double y) {
+        radius = this.getSize();
         double dx = x - getX();
         double dy = y - getY();
 

@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import se.iths.se.javafx.labb3maxblom.ResizableCanvas?>
 
+<?import javafx.scene.paint.Color?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="se.iths.se.javafx.labb3maxblom.HelloController"
@@ -21,8 +22,12 @@
             </MenuBar>
             <ToolBar>
                 <HBox alignment="CENTER" spacing="5">
-                    <ColorPicker fx:id="colorPicker"/>
-                    <TextField fx:id="shapeSize" text="20"/>
+                    <ColorPicker fx:id="colorPicker">
+                            <value>
+                                <Color blue="0.0" green="0.0" red="1.0" />
+                            </value>
+                    </ColorPicker>
+                    <TextField fx:id="shapeSize" text="40"/>
 
                 </HBox>
             </ToolBar>

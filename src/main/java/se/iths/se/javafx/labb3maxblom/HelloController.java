@@ -15,7 +15,7 @@ import java.nio.file.Path;
 import java.util.stream.Stream;
 
 public class HelloController {
-    Model model;
+    public Model model;
     @FXML
     public Canvas canvas;
     @FXML
@@ -25,7 +25,7 @@ public class HelloController {
     @FXML
     public CheckBox checkBox1;
 
-    String shapeSelected = "rectangle";
+    String shapeSelected = "circle";
 
     public void initialize() {
         model = new Model();
@@ -76,7 +76,6 @@ public class HelloController {
 
     @FXML
     public void onRectangleButtonClick(ActionEvent actionEvent) {
-
         shapeSelected = "rectangle";
     }
 

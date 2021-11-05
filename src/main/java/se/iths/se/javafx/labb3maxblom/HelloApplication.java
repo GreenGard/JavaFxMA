@@ -11,10 +11,10 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        SVGPath svgPath = new SVGPath();
-        String path = "M 100 100 L 300 100 L 200 300 z";
-        svgPath.setContent(path);
-        Group root = new Group(svgPath);
+        //SVGPath svgPath = new SVGPath();
+        //String path = "M 100 100 L 300 100 L 200 300 z";
+        //svgPath.setContent(path);
+        //Group root = new Group(svgPath);
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         //Scene scene = new Scene(root, 600, 300);
