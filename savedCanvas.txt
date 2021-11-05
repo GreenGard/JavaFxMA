@@ -1,0 +1,7 @@
+759.0 309.0 0xe6e64dff class se.iths.se.javafx.labb3maxblom.Rectangle
+621.0 523.0 0xe6e64dff class se.iths.se.javafx.labb3maxblom.Rectangle
+1456.0 632.0 0xe6e64dff class se.iths.se.javafx.labb3maxblom.Rectangle
+1334.0 218.0 0xe6e64dff class se.iths.se.javafx.labb3maxblom.Rectangle
+995.0 702.0 0xe6e64dff class se.iths.se.javafx.labb3maxblom.Rectangle
+429.0 622.0 0xe6e64dff class se.iths.se.javafx.labb3maxblom.Rectangle
+309.0 160.0 0xe6e64dff class se.iths.se.javafx.labb3maxblom.Rectangle

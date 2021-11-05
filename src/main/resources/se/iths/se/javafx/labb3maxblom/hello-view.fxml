@@ -13,16 +13,26 @@
 
     <top>
         <VBox>
+            <MenuBar>
+                <Menu text="File">
+                    <MenuItem text="Save" onAction="#onSave"/>
+                    <MenuItem text="Exit" onAction="#onExit"/>
+                </Menu>
+            </MenuBar>
             <ToolBar>
                 <HBox alignment="CENTER" spacing="5">
                     <ColorPicker fx:id="colorPicker"/>
-                    <CheckBox fx:id="eraser" />
+                    <TextField fx:id="shapeSize" text="20"/>
+
                 </HBox>
             </ToolBar>
 
             <HBox alignment="TOP_LEFT" spacing="5">
-                <Button onAction="#onCircleButtonClick" text="Circle" onMouseClicked="#onCircleButtonClick"/>
-                <Button onAction="#onRectangleButtonClick" text="Rectangle" onMouseClicked="#onRectangleButtonClick"/>
+                <Button onAction="#onCircleButtonClick" text="Circle"/>
+                <Button onAction="#onRectangleButtonClick" text="Rectangle"/>
+                <Button onAction="#onUndoButtonClick" text="Undo"/>
+                <Button onAction="#writeStoreInventoryToFile" text="Save"/>
+                <CheckBox fx:id="checkBox1" mnemonicParsing="false" text="SelectItem"/>
             </HBox>
 
             <stylesheets>

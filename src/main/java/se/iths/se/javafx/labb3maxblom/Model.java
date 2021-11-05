@@ -3,6 +3,8 @@ package se.iths.se.javafx.labb3maxblom;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.css.Size;
+import javafx.css.SizeUnits;
 import javafx.scene.paint.Color;
 
 
@@ -13,6 +15,8 @@ public class Model {
     private final StringProperty text;
     private final BooleanProperty inColor;
     private final ObjectProperty<Color> color;
+    //private final BooleanProperty size;
+
 
     ObservableList<String> observableList =
             FXCollections.observableArrayList();
@@ -23,18 +27,25 @@ public class Model {
         this.text = new SimpleStringProperty("");
         this.inColor = new SimpleBooleanProperty();
         this.color = new SimpleObjectProperty<>(Color.BLACK);
-    }
+        //this.size = new ObjectProperty<Size>();
+        }
+
 
     public Color getColor() {
+
         return color.get();
     }
 
     public ObjectProperty<Color> colorProperty() {
+
         return color;
     }
 
-    public void setColor(Color color) {
-        this.color.set(color);
+    public void setColor(String color) {
+        this.color.set(Color.valueOf(color));
+    }
+    public void setSize(double radius ) {
+       // this.color.set(Color.valueOf(color));
     }
 
     public boolean isInColor() {

@@ -20,7 +20,6 @@ public abstract sealed class Shape permits Circle, Rectangle {
 
     public abstract boolean isInside(double x, double y);
 
-
     public Color getColor() {
         return color;
     }
@@ -47,5 +46,4 @@ public abstract sealed class Shape permits Circle, Rectangle {
         this.y = y;
         return this;
     }
-
 }

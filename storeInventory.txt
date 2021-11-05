@@ -1,0 +1,3 @@
+114.0 48.0 0xb31a1aff class se.iths.se.javafx.labb3maxblom.Rectangle
+189.0 79.0 0xb31a1aff class se.iths.se.javafx.labb3maxblom.Rectangle
+104.0 106.0 0xb31a1aff class se.iths.se.javafx.labb3maxblom.Rectangle

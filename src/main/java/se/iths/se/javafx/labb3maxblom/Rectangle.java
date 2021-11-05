@@ -22,9 +22,12 @@ public final class Rectangle extends Shape {
 
     @Override
     public boolean isInside(double x, double y) {
+        double dx = x - getX();
+        double dy = y - getY();
 
+        double distanceFromRectangleCenterSquared =  dx * dx + dy * dy;
 
-        return false;
+        return distanceFromRectangleCenterSquared < size * size;
     }
 }
 
