@@ -116,6 +116,7 @@ public class HelloController {
 
 
     public void onExit(ActionEvent actionEvent) {
+        System.exit(0);
 
     }
 }
