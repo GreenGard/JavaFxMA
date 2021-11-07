@@ -6,7 +6,9 @@ import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
 
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
 public class Model {
@@ -19,6 +21,9 @@ public class Model {
             FXCollections.observableArrayList();
 
     public List<Shape> shapes = new ArrayList<>();
+
+    Deque<List<Shape>> undo = new ArrayDeque<>();
+
 
     public Model() {
         this.text = new SimpleStringProperty("");

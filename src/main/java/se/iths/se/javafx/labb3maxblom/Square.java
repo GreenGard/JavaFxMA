@@ -4,10 +4,20 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public final class Square extends Shape {
-    private double size = this.getSize();
 
-    public Square(Color color, double x, double y, double size) {
+    public Square(Color color, double x, double y, double size)
+    {
         super(color, x, y, size);
+    }
+
+    public Square(Shape shape) {
+        super(shape);
+
+    }
+
+    @Override
+    public Shape copyOf() {
+        return new Square(this);
     }
 
     public String drawSVG() {
@@ -21,21 +31,21 @@ public final class Square extends Shape {
     }
     @Override
     public void draw(GraphicsContext graphicsContext) {
-        size = this.getSize();
-        double halfSize = size * 0.5;
+
+        double halfSize = getSize() * 0.5;
         graphicsContext.setFill(this.getColor());
-        graphicsContext.fillRect(getX() - halfSize, getY() - halfSize, size, size);
+        graphicsContext.fillRect(getX() - halfSize, getY() - halfSize, getSize(), getSize());
     }
 
     @Override
     public boolean isInside(double x, double y) {
-        size = this.getSize();
+
         double dx = x - getX();
         double dy = y - getY();
 
         double distanceFromRectangleCenterSquared =  dx * dx + dy * dy;
 
-        return distanceFromRectangleCenterSquared < size * size;
+        return distanceFromRectangleCenterSquared < getSize() * getSize();
     }
 }
 

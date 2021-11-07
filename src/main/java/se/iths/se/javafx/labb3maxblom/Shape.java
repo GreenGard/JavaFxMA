@@ -16,6 +16,17 @@ public abstract sealed class Shape permits Circle, Square {
         this.size = size;
     }
 
+    public Shape(Shape shape) {
+        this.color = shape.color;
+        this.x = shape.x;
+        this.y = shape.y;
+        this.size = shape.size;
+    }
+
+
+
+    public abstract Shape copyOf();
+
     public abstract void draw(GraphicsContext graphicsContext);
 
     public abstract boolean isInside(double x, double y);

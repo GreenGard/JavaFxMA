@@ -12,6 +12,9 @@ public class Shapes {
     public static Square rectangleOf(double x, double y, double size, Color color) {
         return new Square(color, x, y, size);
     }
+
+
+
     public static Shape convertSVGToShape(String line) {
         try {
             Pattern pattern = Pattern.compile("=");

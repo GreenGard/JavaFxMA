@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import se.iths.java21.UndoManager;
+
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.util.ArrayList;
@@ -27,43 +28,54 @@ public class HelloController {
     public CheckBox checkBox1;
 
     String shapeSelected = "circle";
-    UndoManager undoManager;
-    List<Shape> Undo = new ArrayList<>();
 
     public void initialize() {
         model = new Model();
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        //undoManager = UndoManager.getInstance();
+
+
     }
 
     public void canvasClicked(MouseEvent event) {
+        List<Shape> tempList = getTempList();
+        model.undo.addLast(tempList);
+
         if (checkBox1.isSelected()) {
             if (event.getButton().name().equals("PRIMARY")) {
                 model.shapes.stream()
                         .filter(shape -> shape.isInside(event.getX(), event.getY()))
                         .findFirst().ifPresent(shape -> {
-                            Undo.add(shape);
                             shape.setColor(colorPicker.getValue());
                             shape.setSize(Integer.parseInt(shapeSize.getText()));
                         });
                 draw();
             }
         } else {
+
+
             if (event.getButton().name().equals("PRIMARY")) {
                 switch (shapeSelected) {
                     case "circle":
                         model.shapes.add(Shapes.circleOf(event.getX(), event.getY(), Integer.parseInt(shapeSize.getText()), colorPicker.getValue()));
-                        Undo.add(model.shapes.get(model.shapes.size()-1));
-                        //undoManager.addToUndoStack(model.shapes);
+
                         break;
                     case "rectangle":
                         model.shapes.add(Shapes.rectangleOf(event.getX(), event.getY(), Integer.parseInt(shapeSize.getText()), colorPicker.getValue()));
-                        Undo.add(model.shapes.get(model.shapes.size()-1));
+
                         break;
                 }
             }
             draw();
         }
+    }
+
+    private List<Shape> getTempList() {
+
+        List<Shape> tempList = new ArrayList<>();
+
+        for (Shape shape : model.shapes) {
+            tempList.add(shape.copyOf());
+        }
+        return tempList;
     }
 
     @FXML
@@ -87,32 +99,30 @@ public class HelloController {
     }
 
     public void onUndoButtonClick() {
-//        model.shapes.set(model.shapes.size() - 1 ,Undo.get(Undo.size() - 1));
-//        Undo.remove(Undo.size() -1);
-//        draw();
+        if (model.undo.isEmpty())
+            return;
 
-        if (model.shapes.size() > 0) {
-            model.shapes.remove(model.shapes.size() - 1);
-            draw();
-        }
+        model.shapes.clear();
+        model.shapes.addAll(model.undo.removeLast());
+
+        draw();
     }
 
 
     public void onSave(ActionEvent event) {
 
-            SVGWriter.saveSVGFile(model);
+        SVGWriter.saveSVGFile(model);
 
-            try {
-                WritableImage snapshot = canvas.snapshot(null, null);
+        try {
+            WritableImage snapshot = canvas.snapshot(null, null);
 
-                ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png", new File("paint.png"));
-            } catch (Exception e) {
-                System.out.println("Failed to save image: " + e);
-            }
+            ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png", new File("paint.png"));
+        } catch (Exception e) {
+            System.out.println("Failed to save image: " + e);
+        }
 
 
-            }
-
+    }
 
 
     public void onExit(ActionEvent actionEvent) {
