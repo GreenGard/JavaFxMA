@@ -34,9 +34,8 @@
 
             <HBox alignment="TOP_LEFT" spacing="5">
                 <Button onAction="#onCircleButtonClick" text="Circle"/>
-                <Button onAction="#onRectangleButtonClick" text="Rectangle"/>
+                <Button onAction="#onRectangleButtonClick" text="Square"/>
                 <Button onAction="#onUndoButtonClick" text="Undo"/>
-                <Button onAction="#onSave" text="Save"/>
                 <CheckBox fx:id="checkBox1" mnemonicParsing="false" text="SelectItem"/>
             </HBox>
 

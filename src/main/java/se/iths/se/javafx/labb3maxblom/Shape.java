@@ -3,7 +3,7 @@ package se.iths.se.javafx.labb3maxblom;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public abstract sealed class Shape permits Circle, Rectangle {
+public abstract sealed class Shape permits Circle, Square {
     private Color color;
     private double x;
     private double y;
@@ -51,4 +51,5 @@ public abstract sealed class Shape permits Circle, Rectangle {
     public void setSize(double size){
         this.size = size;
     }
+    public abstract String drawSVG();
 }

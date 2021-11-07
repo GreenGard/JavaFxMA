@@ -65,4 +65,8 @@ public class Model {
     public StringProperty textProperty() {
         return text;
     }
+
+    public List<Shape> getShapes() {
+        return shapes;
+    }
 }

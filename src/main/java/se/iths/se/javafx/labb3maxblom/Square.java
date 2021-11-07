@@ -3,13 +3,22 @@ package se.iths.se.javafx.labb3maxblom;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public final class Rectangle extends Shape {
+public final class Square extends Shape {
     private double size = this.getSize();
 
-    public Rectangle(Color color, double x, double y, double size) {
+    public Square(Color color, double x, double y, double size) {
         super(color, x, y, size);
     }
 
+    public String drawSVG() {
+        String convertedColor = "#" + getColor().toString().substring(2, 10);
+
+        return "<rect x=\"" + (getX() - getSize()) + "\" " +
+                "y=\"" + (getY() - getSize()) + "\" " +
+                "width=\"" + (2 * getSize()) + "\" " +
+                "height=\"" + (2 * getSize()) + "\" " +
+                "fill=\"" + convertedColor + "\" />";
+    }
     @Override
     public void draw(GraphicsContext graphicsContext) {
         size = this.getSize();

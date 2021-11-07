@@ -27,4 +27,15 @@ public final class Circle extends Shape {
 
         return distanceFromCircleCenterSquared < radius * radius;
     }
+
+    @Override
+    public String drawSVG() {
+        String convertedColor = "#" + getColor().toString().substring(2, 10);
+
+        return "<circle cx=\"" + getX() + "\" " +
+                "cy=\"" + getY() + "\" " +
+                "r=\"" + getSize() + "\" " +
+                "fill=\"" + convertedColor + "\" />";
+    }
 }
+
