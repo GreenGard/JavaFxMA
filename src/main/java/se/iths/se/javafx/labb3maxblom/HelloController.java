@@ -1,12 +1,21 @@
 package se.iths.se.javafx.labb3maxblom;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
+import se.iths.java21.Command;
+import se.iths.java21.UndoManager;
+
+import javax.imageio.ImageIO;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -33,19 +42,17 @@ public class HelloController {
     }
 
     public void canvasClicked(MouseEvent event) {
-        if (checkBox1.isSelected()){
+        if (checkBox1.isSelected()) {
             if (event.getButton().name().equals("PRIMARY")) {
                 model.shapes.stream()
                         .filter(shape -> shape.isInside(event.getX(), event.getY()))
                         .findFirst().ifPresent(shape -> {
-                           shape.setColor(colorPicker.getValue());
+                            shape.setColor(colorPicker.getValue());
                             shape.setSize(Integer.parseInt(shapeSize.getText()));
-                            });
+                        });
                 draw();
             }
-        }
-        else
-        {
+        } else {
             if (event.getButton().name().equals("PRIMARY")) {
                 switch (shapeSelected) {
                     case "circle":
@@ -85,16 +92,33 @@ public class HelloController {
     }
 
     public void onUndoButtonClick() {
-        if (model.shapes.size() > 0){
-            model.shapes.remove(model.shapes.size()-1);
+
+        if (model.shapes.size() > 0) {
+            model.shapes.remove(model.shapes.size() - 1);
             draw();
         }
     }
 
-    public void onSave() {
-        //Image snapShot= canvas.snapshot(null,null);
-        //ImageIO.write();
+    public void onSave(ActionEvent event) {
+
+        FileChooser savefile = new FileChooser();
+        savefile.setTitle("Save File");
+
+        File file = savefile.showSaveDialog(HelloApplication.stage);
+        System.out.println("is file null ? " + file);
+        if (file != null) {
+            try {
+                WritableImage writableImage = new WritableImage(320, 240);
+                canvas.snapshot(null, writableImage);
+                RenderedImage renderedImage = SwingFXUtils.fromFXImage(writableImage, null);
+                ImageIO.write(renderedImage, "png", file);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                System.out.println("Error!");
+            }
+        }
     }
+
 
     public void onExit(ActionEvent actionEvent) {
     }

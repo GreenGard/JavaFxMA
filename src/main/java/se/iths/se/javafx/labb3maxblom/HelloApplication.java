@@ -9,8 +9,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
+    public static Stage stage;
     @Override
     public void start(Stage stage) throws IOException {
+        this.stage = stage;
         //SVGPath svgPath = new SVGPath();
         //String path = "M 100 100 L 300 100 L 200 300 z";
         //svgPath.setContent(path);
