@@ -12,7 +12,7 @@ Clone this project via GitHub
 or just copy the URL[ https://github.com/GreenGard/JavaFxMA.git
 
 Create a new project, click Git and Clone. 
-![img_1.png](img/img_1.png)
+![img_1.png](img_1.png)
 add the URL for this repository
 ![img_2.png](img/img_2.png)
 You now have access to JavaFXMA!
