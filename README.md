@@ -1,5 +1,4 @@
-# Labb1Movie
-
+# Lab3-Java-Programmering JavaFxMA
 
 ## Usage
 
